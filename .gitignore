@@ -27,3 +27,5 @@ reuniones.md
 repo.drawio
 ## virtual env
 env/
+### env variables
+repo_project/config/.env
