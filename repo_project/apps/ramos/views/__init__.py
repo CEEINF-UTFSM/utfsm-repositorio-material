@@ -1,1 +1,1 @@
-from . import home
+from .home import home
