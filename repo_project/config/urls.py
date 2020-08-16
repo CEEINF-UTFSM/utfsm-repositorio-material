@@ -21,7 +21,7 @@ from django.conf import settings
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('ramos.urls')),
-    path('archivos', include('archivos.urls')),
+    path('archivos/', include('archivos.urls')),
 ]
 
 if settings.DEBUG:
