@@ -6,6 +6,7 @@ from django.db import models
 class Ramo(models.Model):
     sigla = models.CharField(max_length=50)
     nombre = models.CharField(max_length=255)
+    semestre = models.IntegerField("semestre en que se cursa el ramo")
 
 
 class Carrera(models.Model):
