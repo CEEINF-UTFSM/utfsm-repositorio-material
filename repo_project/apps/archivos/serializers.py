@@ -7,4 +7,9 @@ class ArchivoSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Archivo
-        fields = ["nombre", "ramo", "tipo", "semestre", "subido", "user", "id"]
+        fields = ["nombre", "ramo", "tipo",
+                  "semestre", "subido", "user", "id", "path"]
+
+    def to_representation(self, instance):
+        self.fields['ramo'] = RamoSerializer(read_only=True)
+        return super(ArchivoSerializer, self).to_representation(instance)
