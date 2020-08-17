@@ -19,4 +19,4 @@ def archivo_upload(request):
     else:
         print(serializer.errors)
         print(request.data)
-        return Response(status=status.HTTP_400_BAD_REQUEST)
+        return Response(data=serializer.errors, status=status.HTTP_400_BAD_REQUEST)
