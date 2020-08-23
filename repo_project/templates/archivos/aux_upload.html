@@ -1,0 +1,8 @@
+<h2>Upload</h2>
+{{ form.non_field_errors }}
+<form method="post" enctype="multipart/form-data">
+    {%csrf_token%}
+    {{form.as_p}}
+
+    <button type="submit">Upload File</button>
+</form>

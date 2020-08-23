@@ -8,6 +8,9 @@ class Ramo(models.Model):
     nombre = models.CharField(max_length=255)
     semestre = models.IntegerField("semestre en que se cursa el ramo")
 
+    def __str__(self):
+        return f"{self.sigla} {self.nombre}"
+
 
 class Carrera(models.Model):
     nombre = models.CharField(max_length=255)

@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 
 from ramos.models import Ramo
 # Create your models here.
+from django.core.validators import MinValueValidator, MaxValueValidator
 
 
 class UserProfile(models.Model):
@@ -19,8 +20,8 @@ class Archivo(models.Model):
     ramo = models.ForeignKey(Ramo, on_delete=models.CASCADE)
     tipo = models.CharField(max_length=255)
     aceptado = models.BooleanField(default=False)
-    semestre = models.CharField(
-        "semestre en que se genero el archivo", max_length=50)
+    semestre = models.IntegerField(
+        "semestre en que se genero el archivo", validators=[MinValueValidator(1), MaxValueValidator(11)])
     subido = models.DateTimeField(auto_now=False, auto_now_add=True)
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
-    path = models.FileField(upload_to=path_of_file)
+    archivo = models.FileField(upload_to=path_of_file)
