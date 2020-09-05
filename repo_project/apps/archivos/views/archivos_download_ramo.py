@@ -1,5 +1,4 @@
 from django.shortcuts import render
-from ..serializers import ArchivoSerializer
 from django.http import JsonResponse
 
 from rest_framework import status
@@ -26,6 +25,5 @@ def archivo_dl_ramo(request, ramo):
             , safe=False)
     except:
         return JsonResponse(
-            {'status':400, 
-            'url': f"media/media/TEMP/{ramo}.zip"}
+            {'status':400}
             , safe=False)
