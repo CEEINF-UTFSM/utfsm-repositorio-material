@@ -4,7 +4,6 @@ from django.contrib.auth.models import User
 from ramos.models import Ramo
 # Create your models here.
 
-
 class UserProfile(models.Model):
     user = models.OneToOneField(
         User, on_delete=models.CASCADE)
@@ -24,3 +23,5 @@ class Archivo(models.Model):
     subido = models.DateTimeField(auto_now=False, auto_now_add=True)
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     path = models.FileField(upload_to=path_of_file)
+    def __str__(self):
+        return self.nombre
