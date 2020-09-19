@@ -1,0 +1,11 @@
+{% extends 'archivos/base.html' %} {% block content %}
+<h1>Pick your Poison</h1>
+<div>
+  {% for ramo in ramos %}
+  <div>
+    <a href="/archivos/{{ramo.sigla}}">{{ramo.sigla}} - {{ramo.nombre}}</a>
+  </div>
+  {% endfor %}
+</div>
+
+{% endblock %}
