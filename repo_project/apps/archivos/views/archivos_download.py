@@ -30,7 +30,8 @@ def root(request, sigla):
             zip_obj.write('media/'+str(e.archivo), str(e.archivo))
         zip_obj.close()
         context['zip'] = '/media/temp/'+filename+".zip"
-    return render(request, 'archivos/listado.html', context)
+    # return render(request, 'archivos/listado.html', context)
+    return render(request, 'ramos/index.html', context)
 
 
 def zip_ramo(request, sigla):
@@ -50,3 +51,5 @@ def pick_ramo(request):
         'ramos': all_ramos
     }
     return render(request, 'archivos/pick.html', context)
+    
+

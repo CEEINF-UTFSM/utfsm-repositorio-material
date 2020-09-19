@@ -4,4 +4,4 @@ from django.shortcuts import render
 
 
 def home(request):
-    return render(request, "ramos/index.html")
+    return render(request, "archivos/pick.html")
