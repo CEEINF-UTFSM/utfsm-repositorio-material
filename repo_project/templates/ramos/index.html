@@ -1,1 +1,61 @@
-HOLA MUNDO
+{% extends 'global/base.html' %} {% block content %}
+
+<a id="download-all" href="">Descargar todo el ramo</a>
+
+<div class="container mt-sm-0 ml-sm-1 mr-sm-1 mt-md-5 ml-md-4 mr-md-4">
+  <div class="row">
+    <h1 style="color: #fff">{{current}}</h1>
+  </div>
+  <div clss="row">
+    <div class="table-responsive">
+      <table id="myTable" class="table table-dark table-bordered table-striped">
+        <thead>
+          <tr>
+            <th scope="col-sm-1 col-md-1 col-lg-1 col-xl-1"></th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Tipo</th>
+            <th scope="col">Semestre</th>
+            <th scope="col">Fecha</th>
+            <th scope="col-sm-2 col-md-2 col-lg-2 col-xl-2">Peso</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for file in files %}
+          <tr>
+            <td scope="col-sm-1 col-md-1 col-lg-1 col-xl-1">
+              <a download href="/media/{{file.archivo}}">
+                <center><i class="fa fa-download"></i></center>
+              </a>
+            </td>
+            <td scope="col">{{file.nombre}}</td>
+            <td scope="col"><i class="fa fa-file-pdf-o"></i></td>
+            <td scope="col">{{file.semestre}}</td>
+            <td scope="col">{{file.subido}}</td>
+            <td scope="col-sm-2 col-md-2 col-lg-2 col-xl-2">1000 TB</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<script>
+  $(document).ready(function () {
+    $("#myTable").DataTable({
+      paging: false,
+      stateSave: true,
+      info: false,
+      language: {
+        search: "Filtrar",
+      },
+    });
+  });
+  $("#download-all").click(function (e) {
+    e.preventDefault();
+    var url = "{% url 'archivos:zip-ramo' current %}";
+    $.get(url, function (data) {
+      window.location.href = "/" + data["link"];
+    });
+  });
+</script>
+{% endblock %}

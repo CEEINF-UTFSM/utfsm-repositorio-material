@@ -12,7 +12,7 @@ class UserProfile(models.Model):
 
 
 def path_of_file(instance, filename):
-    return f"media/{instance.ramo.sigla}/{instance.tipo}/{filename}"
+    return f"{instance.ramo.sigla}/{instance.tipo}/{filename}"
 
 
 class Archivo(models.Model):
@@ -25,3 +25,4 @@ class Archivo(models.Model):
     subido = models.DateTimeField(auto_now=False, auto_now_add=True)
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     archivo = models.FileField(upload_to=path_of_file)
+    def __str__(self): return self.nombre
