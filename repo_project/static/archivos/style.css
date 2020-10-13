@@ -12,9 +12,13 @@ th {
 }
 
 tr:nth-child(even) {
-    background-color: #dddddd;
+    background-color: #343a40 ;
 }
 
 #myTable_filter {
     margin: 100px !important;
+}
+
+.hacker{
+	background-color: white !important;
 }

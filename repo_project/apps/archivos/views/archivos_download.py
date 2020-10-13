@@ -31,7 +31,7 @@ def root(request, sigla):
         zip_obj.close()
         context['zip'] = '/media/temp/'+filename+".zip"
     # return render(request, 'archivos/listado.html', context)
-    return render(request, 'ramos/index.html', context)
+    return render(request, 'archivos/listado.html', context)
 
 
 def zip_ramo(request, sigla):
