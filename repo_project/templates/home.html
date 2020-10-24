@@ -1,31 +1,88 @@
 {% extends 'global/base.html' %}
 
 {% block content %}
-<div class="row">
-    <div class="col">
-        <div class="card">
-            <div class="card-body">
-                This is some text within a card body.
-            </div>
+<div class="row  row-cols-1 row-cols-md-2">
+  <div class="col mb-3">
+    <div class="card bg-dark text-white h-100">
+      <div class="card-body d-flex align-items-center justify-content-center">
+        <div>
+          <h1 class="display-2 text-center">123456</h1>
+          <p class="card-text text-center">Archivos disponibles</p>
         </div>
+      </div>
     </div>
+  </div>
+  <div class="col mb-3">
+    <div class="card bg-dark text-white">
+      <div class="card-header">
+        Usuarios mas activos
+      </div>
+      <ul class="list-group list-group-flush ">
+        <li class="list-group-item bg-dark">1- Manriq</li>
+        <li class="list-group-item bg-dark">2- Yhatoh</li>
+        <li class="list-group-item bg-dark">3- Vicho</li>
+        <li class="list-group-item bg-dark">4- Keleron</li>
+        <li class="list-group-item bg-dark">5- Nose</li>
+        {% for user in users %}
+          <li class="list-group-item bg-dark">{{user.id}}- {{user.name}}</li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
 </div>
 <div class="row mt-3">
-    <div class="col">
-        <div class="card">
-            <div class="card-body">
-                <h1 class="display-4 text-center">99</h1>
-                This is some text within a card body.
-            </div>
-        </div>
+  <div class="col">
+    <div class="card bg-dark text-white">
+      <div class="card-header">
+        Ultimos archivos subidos
+      </div>
+      <div class="card-body">
+        <table class="table text-white table-borderless table-striped">
+          <thead>
+            <tr>
+              <th>Nombre</th>
+              <th>Ramo</th>
+              <th>Autor</th>
+              <th>Hace</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Nombre del archivo</td>
+              <td>Link al ramo</td>
+              <td>username</td>
+              <td>5[min]</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>Nombre del archivo</td>
+              <td>Link al ramo</td>
+              <td>username</td>
+              <td>5[min]</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>Nombre del archivo</td>
+              <td>Link al ramo</td>
+              <td>username</td>
+              <td>5[min]</td>
+              <td></td>
+            </tr>
+            {% for file in files %}
+              <tr>
+                <td>{{file.nombre}}</td>
+                <td>{{file.ramo}}</td>
+                <td>{{file.autor}}</td>
+                <td>{{file.hace}}</td>
+                <td></td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
     </div>
-    <div class="col">
-        <div class="card">
-            <div class="card-body">
-                <h1 class="display-4 text-center">99</h1>
-                This is some text within a card body.
-            </div>
-        </div>
-    </div>
+  </div>
 </div>
+
 {% endblock %}
