@@ -1,9 +1,43 @@
 <!--Lo dejare al final porque es re pajero-->
 <div style="color:#fff;">
-<p>Sem 1</p>
-<p>Sem 2</p>
-<p>Sem 3</p>
-<p>Sem 4</p>
-<p>Sem 5</p>
-<p>Sem 6</p>
+	<div class="accordion mt-4" id="accordionExample">
+	  {% for semestre, ramos in ramo_by_semestre %}
+		  <a class="btn btn-block text-left side-text" type="button" data-toggle="collapse" data-target="#collapse{{semestre}}" aria-expanded="false" aria-controls="collapse{{semestre}}" >
+		    <span class="h5">
+		    	Semestre {{semestre}}
+		    </span>
+	    	<span class="ic">
+	    		<i class="fa fa-angle-right"></i>
+	    	</span>
+		  </a>
+
+		  <div id="collapse{{semestre}}" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+		    <ul class="list-group list-group-flush">
+		    	{% for ramo in ramos %}
+				  	<li class="list-group-item bg-dark">
+				  		<a href="/archivos/{{ramo}}">
+				  			{{ramo}}
+				  		</a>
+				  	</li>
+				  {% endfor %}
+				</ul>
+		  </div>
+		{% endfor %}
+	</div>
 </div>
+
+<script>
+    $(document).ready(function(){
+        // Add down arrow icon for collapse element which is open by default
+        $(".collapse.show").each(function(){
+        	$(this).prev(".card-header").find(".fa").addClass("fa-angle-down").removeClass("fa-angle-right");
+        });
+        
+        // Toggle right and down arrow icon on show hide of collapse element
+        $(".collapse").on('show.bs.collapse', function(){
+        	$(this).prev(".card-header").find(".fa").removeClass("fa-angle-right").addClass("fa-angle-down");
+        }).on('hide.bs.collapse', function(){
+        	$(this).prev(".card-header").find(".fa").removeClass("fa-angle-down").addClass("fa-angle-right");
+        });
+    });
+</script>
