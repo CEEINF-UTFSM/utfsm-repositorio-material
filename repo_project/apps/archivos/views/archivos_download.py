@@ -15,10 +15,20 @@ def root(request, sigla):
     all_ramos = Ramo.objects.all()
     selected_ramo = Ramo.objects.get(sigla=sigla)
     all_files = all_files.filter(ramo=selected_ramo)
+    ramo_by_semestre = {}
+    for ramo in all_ramos:
+        semestre = str(ramo.semestre)
+        if semestre not in ramo_by_semestre.keys():
+            ramo_by_semestre[semestre] = []
+        ramo_by_semestre[semestre].append(ramo.sigla)
+
+    ramo_by_semestre = list(ramo_by_semestre.items())
+    ramo_by_semestre.sort()
     context = {
         'files': all_files,
         'ramos': all_ramos,
         'current': sigla,
+        'ramo_by_semestre': ramo_by_semestre,
         'zip': None,
     }
     if request.method == 'POST':

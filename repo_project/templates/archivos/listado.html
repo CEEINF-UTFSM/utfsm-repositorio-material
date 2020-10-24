@@ -1,15 +1,13 @@
 {% extends 'global/base.html' %} {% block content %}
 
-<div>
-  {% for ramo in ramos %}
-  <a href="/archivos/{{ramo.sigla}}">{{ramo.sigla}}</a>
-  {% endfor %}
-</div>
-<div class="container mt-sm-0 ml-sm-1 mr-sm-1 mt-md-5 ml-md-4 mr-md-4">
+<div class="container pl-5 mt-sm-0 mr-sm-1 mt-md-3 mr-md-4">
   <div class="row">
     <h1 style="color: #fff">{{current}}</h1>
   </div>
-  <a id="download-all" href="">Descargar todo el ramo</a>
+  <div class="row">
+    <a id="download-all" href="">Descargar todo el ramo</a>
+  </div>
+  
 
   <form action="{% url 'archivos:arch-root' current %}" method="post">
     <div class="row">
@@ -31,7 +29,7 @@
         </thead>
         <tbody>
           {% for file in files %}
-          <tr style="background-color: #343a40;">
+          <tr>
             <td>
               <center>
                 <input
@@ -66,36 +64,6 @@
   </form>
 
   <a href="{{zip}}">{{zip}}</a>
-  <div class="hacker">
-    HOA
-  </div>
 </div>
-
-{% block javascript %}
-
-<script>
-  $(document).ready(function () {
-    $("#filetable").DataTable({
-      paging: false,
-      stateSave: true,
-      info: false,
-      language: {
-        search: "Filtrar",
-      },
-    });
-    document.getElementById("filetable_filter").style.color = "white"
-  });
-  $("#download-all").click(function (e) {
-    e.preventDefault();
-    var url = "{% url 'archivos:zip-ramo' current %}";
-    $.get(url, function (data) {
-      window.location.href = "/" + data["link"];
-    });
-  });
-
-
-</script>
-
-{% endblock javascript %}
 
 {% endblock %}

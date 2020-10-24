@@ -4,21 +4,15 @@ table {
     width: 90%;
 }
 
-td,
-th {
+td, th {
     border: 1px solid #dddddd;
     text-align: left;
-    padding: 8px;
+    padding: 10px 30px 10px 10px !important;
+    background-color: #343a40;
 }
 
-tr:nth-child(even) {
-    background-color: #343a40 ;
-}
+
 
 #myTable_filter {
     margin: 100px !important;
-}
-
-.hacker{
-	background-color: white !important;
 }
