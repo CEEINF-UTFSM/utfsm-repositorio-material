@@ -2,13 +2,17 @@ from django.contrib import admin
 
 from .models import Archivo
 from ramos.models import Ramo
-from .views.archivos_aceptar import archivos_aceptar, archivos_rechazar
 # Register your models here.
 
 
-class ArchivoAdmin(admin.ModelAdmin):
-    actions = [archivos_aceptar, archivos_rechazar]
+class ArchivosAdmin(admin.ModelAdmin):
+    list_display = ['nombre', 'aceptado']
+    actions = ['archivos_aceptar']
 
-admin.site.register(Archivo)
+    def archivos_aceptar(self, request, queryset):
+        queryset.update(aceptado=True)
+    archivos_aceptar.short_description = 'Aceptar archivo(s)'
+
+
+admin.site.register(Archivo, ArchivosAdmin)
 admin.site.register(Ramo)
-admin.site.register(ArchivoAdmin)
