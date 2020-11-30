@@ -21,4 +21,7 @@ def home(request):
 	return render(request, "home.html", context)
 
 def login(request):
-	return render(request, "index.html")
+	return render(request, "loginRegister/login.html")
+
+def register(request):
+	return render(request, "loginRegister/register.html")
