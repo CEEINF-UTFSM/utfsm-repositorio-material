@@ -8,4 +8,5 @@ def home(request):
 	context = {
 		'ramos': all_ramos
 	}
-	return render(request, "archivos/pick.html", context)
+	print(context)
+	return render(request, "home.html", context)

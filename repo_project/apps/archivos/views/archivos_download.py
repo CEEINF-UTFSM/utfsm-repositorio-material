@@ -60,6 +60,6 @@ def pick_ramo(request):
     context = {
         'ramos': all_ramos
     }
-    return render(request, 'archivos/pick.html', context)
+    return render(request, 'archivos/home.html', context)
     
 

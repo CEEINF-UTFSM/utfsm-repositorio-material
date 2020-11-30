@@ -14,3 +14,4 @@ class Ramo(models.Model):
 class Carrera(models.Model):
     nombre = models.CharField(max_length=255)
     ramos = models.ManyToManyField(Ramo)
+    

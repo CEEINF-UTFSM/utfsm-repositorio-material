@@ -1,0 +1,26 @@
+[
+  {
+    "model": "ramos.Ramo",
+    "fields": {
+      "sigla": "iwi 132",
+      "nombre": "programacion",
+      "semestre": "1"
+    }
+  },
+  {
+    "model": "ramos.Ramo",
+    "fields": {
+      "sigla": "inf 45",
+      "nombre": "super ramo",
+      "semestre": "2"
+    }
+  },
+  {
+    "model": "ramos.Ramo",
+    "fields": {
+      "sigla": "inf 132",
+      "nombre": "computador ",
+      "semestre": "2"
+    }
+  }
+]
