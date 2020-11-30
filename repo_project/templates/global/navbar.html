@@ -1,13 +1,27 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark main-navigation">
-  <a class="navbar-brand" href="#">Repositorio material USM</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+  <a class="navbar-brand" href="/">Repositorio material USM</a>
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-toggle="collapse"
+    data-target="#navbarNavDropdown"
+    aria-controls="navbarNavDropdown"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
     <span class="navbar-toggler-icon"></span>
   </button>
-  <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
+  <div
+    class="collapse navbar-collapse justify-content-end"
+    id="navbarNavDropdown"
+  >
     <ul class="navbar-nav">
+      {% if user.is_authenticated %}
       <li class="nav-item active">
         <form class="form-inline my-2 my-lg-0">
-          <button class="btn btn-success my-2 my-sm-0" type="submit">¡Aporta con material!</button>
+          <button class="btn btn-success my-2 my-sm-0" type="submit">
+            ¡Aporta con material!
+          </button>
         </form>
       </li>
       <li class="nav-item">
@@ -19,12 +33,15 @@
       <li class="nav-item dropdown">
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
           <form class="form-inline my-2 my-lg-0">
-            <button class="btn btn-success my-2 my-sm-0" type="submit">¡Aporta con material!</button>
+            <button class="btn btn-success my-2 my-sm-0" type="submit">
+              ¡Aporta con material!
+            </button>
           </form>
           <a class="dropdown-item" href="#">Another action</a>
           <a class="dropdown-item" href="#">Something else here</a>
         </div>
       </li>
+      {% else %} {% endif %}
     </ul>
   </div>
 </nav>

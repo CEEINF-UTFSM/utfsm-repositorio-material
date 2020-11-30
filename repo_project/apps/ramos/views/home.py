@@ -19,3 +19,6 @@ def home(request):
 	}
 	print(context)
 	return render(request, "home.html", context)
+
+def login(request):
+	return render(request, "index.html")
