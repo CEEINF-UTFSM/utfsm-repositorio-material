@@ -15,6 +15,6 @@ def archivo_upload(request):
     else:
         form = ArchivoForm()
     # print(form)
-    return render(request, "archivos/aux_upload.html", {
+    return render(request, "archivos/upload.html", {
         "form": form
     })
