@@ -1,4 +1,13 @@
 {% extends 'global/base.html' %}
+{% load static %}
+{% block head %}
+
+<script type="text/javascript">
+  let carreras = {}
+</script>
+<script defer type="text/javascript" src="{% static 'ramos/src/upload.js' %}"></script>
+
+{% endblock %}
 
 {% block content %}
 <div class="row text-white">
@@ -12,8 +21,8 @@
       <h5>Seleccion del ramo</h5>
     </div>
     <div class="col-12 col-sm-4 mb-3">
-      <select class="custom-select">
-        <option disabled selected>Selecciona la carrera</option>
+      <select id="select-carrera" class="custom-select" >
+        <option  selected>Selecciona la carrera</option>
         <option value="1">INF</option>
         <option value="2">ELO</option>
         <option value="3">ELI</option>
@@ -21,7 +30,7 @@
       </select>
     </div>
     <div class="col-12 col-sm-4 mb-3">
-      <select class="custom-select" disabled>
+      <select id="select-semestre" class="custom-select" disabled>
         <option disabled selected>Semestre</option>
         <option value="1">1</option>
         <option value="2">2</option>
@@ -30,7 +39,7 @@
       </select>
     </div>
     <div class="col-12 col-sm-4 mb-3">
-      <select class="custom-select" disabled>
+      <select id="select-ramo" class="custom-select" disabled>
         <option disabled selected>Selecciona el ramo</option>
         <option value="1">101</option>
         <option value="2">1564</option>
