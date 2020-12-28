@@ -3,9 +3,13 @@
 {% block head %}
 
 <script type="text/javascript">
-  let carreras = {}
+  {% autoescape off %}
+    let carreras = {{js_carreras}}
+    let ramos = {{js_ramos}}
+  {% endautoescape %}
+
 </script>
-<script defer type="text/javascript" src="{% static 'ramos/src/upload.js' %}"></script>
+<script defer type="text/javascript" src="{% static 'archivos/upload.js' %}"></script>
 
 {% endblock %}
 
@@ -15,7 +19,9 @@
     <h1 class="display-4">Titulo generico</h1>
   </div>
 </div>
-<form>
+<form action="/archivos/upload/" method="POST">
+  {% csrf_token %}
+
   <div class="row text-white mb-3 mt-4">
     <div class="col-12">
       <h5>Seleccion del ramo</h5>
@@ -23,28 +29,19 @@
     <div class="col-12 col-sm-4 mb-3">
       <select id="select-carrera" class="custom-select" >
         <option  selected>Selecciona la carrera</option>
-        <option value="1">INF</option>
-        <option value="2">ELO</option>
-        <option value="3">ELI</option>
-        <option value="3">IDP</option>
+        {% for carrera in carreras %}
+          <option value="{{carrera.id}}">{{carrera.nombre}}</option>
+        {% endfor %}
       </select>
     </div>
     <div class="col-12 col-sm-4 mb-3">
       <select id="select-semestre" class="custom-select" disabled>
         <option disabled selected>Semestre</option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
       </select>
     </div>
     <div class="col-12 col-sm-4 mb-3">
-      <select id="select-ramo" class="custom-select" disabled>
+      <select id="select-ramo" class="custom-select" name="ramo" disabled>
         <option disabled selected>Selecciona el ramo</option>
-        <option value="1">101</option>
-        <option value="2">1564</option>
-        <option value="3">1016</option>
-        <option value="3">34f</option>
       </select>
     </div>
     
@@ -55,22 +52,22 @@
     </div>
     <div class="col-12 col-sm-4 mb-3">
       <select class="custom-select">
-        <option disabled selected>Tipo de archivo</option>
-        <option value="1">Certamen</option>
-        <option value="2">Tarea</option>
-        <option value="3">Otra cosa</option>
+        <option disabled selected name="tipo">Tipo de archivo</option>
+        <option value="Certamen">Certamen</option>
+        <option value="Tarea">Tarea</option>
+        <option value="Otro">Otra cosa</option>
       </select>
     </div>
     <div class="col-12 col-sm-4 mb-3">
-      <input type="text" class="form-control" id="validationDefault02" placeholder="2012-2" required >
+      <input type="number" name="semestre" class="form-control" id="validationDefault02" placeholder="2012-2" required >
       <small id="passwordHelpBlock" class="form-text text-muted">
         Año en que aparecio
       </small>
     </div>
     <div class="col-12 col-sm-4 mb-3">
-      <input type="text" class="form-control" id="validationDefault02" placeholder="1" required >
+      <input type="text" class="form-control" name="nombre" id="validationDefault02" placeholder="1" required>
       <small id="passwordHelpBlock" class="form-text text-muted">
-        Numero de tarea, certamen, etc
+        Nombre
       </small>
     </div>
   </div>
@@ -82,8 +79,8 @@
   <div class="row text-white mb-3 mt-1 justify-content-center">
     <div class="col-12 col-sm-6">
       <div class="custom-file">
-        <input type="file" class="custom-file-input" id="customFile">
-        <label class="custom-file-label" for="customFile">Escoger archivo</label>
+        <input type="file" class="custom-file-input" name="archivo" required>
+        <label class="custom-file-label">Escoger archivo</label>
       </div>
     </div>
   </div>
