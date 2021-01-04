@@ -19,7 +19,7 @@
     <h1 class="display-4">Titulo generico</h1>
   </div>
 </div>
-<form action="/archivos/upload/" method="POST">
+<form action="/archivos/upload/" method="POST" enctype="multipart/form-data">
   {% csrf_token %}
 
   <div class="row text-white mb-3 mt-4">
@@ -51,15 +51,15 @@
       <h5>Informacion del archivo</h5>
     </div>
     <div class="col-12 col-sm-4 mb-3">
-      <select class="custom-select">
-        <option disabled selected name="tipo">Tipo de archivo</option>
+      <select class="custom-select" name="tipo">
+        <option disabled selected >Tipo de archivo</option>
         <option value="Certamen">Certamen</option>
         <option value="Tarea">Tarea</option>
         <option value="Otro">Otra cosa</option>
       </select>
     </div>
     <div class="col-12 col-sm-4 mb-3">
-      <input type="number" name="semestre" class="form-control" id="validationDefault02" placeholder="2012-2" required >
+      <input type="text" name="semestre" class="form-control" id="validationDefault02" placeholder="2012-2" required >
       <small id="passwordHelpBlock" class="form-text text-muted">
         Año en que aparecio
       </small>

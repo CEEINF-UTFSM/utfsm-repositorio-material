@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.core import serializers
 from django.http import JsonResponse
 from django.core.files.storage import FileSystemStorage
+from django.urls import reverse
 
 from ..models import Archivo
 from ..forms import ArchivoForm
@@ -15,7 +16,7 @@ def archivo_upload(request):
         form = ArchivoForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-        return redirect("archivos-upload")
+        return redirect("archivos:archivos-upload")
     else:
         form = ArchivoForm()
         carreras = Carrera.objects.defer()

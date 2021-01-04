@@ -20,8 +20,7 @@ class Archivo(models.Model):
     ramo = models.ForeignKey(Ramo, on_delete=models.CASCADE)
     tipo = models.CharField(max_length=255)
     aceptado = models.BooleanField(default=False)
-    semestre = models.IntegerField(
-        "semestre en que se genero el archivo", validators=[MinValueValidator(1), MaxValueValidator(11)])
+    semestre = models.CharField(max_length=255, verbose_name='semestre en que se genero el archivo')
     subido = models.DateTimeField(auto_now=False, auto_now_add=True)
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     archivo = models.FileField(upload_to=path_of_file)
